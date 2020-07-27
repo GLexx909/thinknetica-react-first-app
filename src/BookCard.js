@@ -10,7 +10,7 @@ class BookCard extends React.Component {
       return <div>Empty book</div>
 
     const subscribersLimitToPopular = 10
-    const { book: { title, description, authors_ids, min_price, cover, subscribers_count } } = this.props
+    const { book: { title, description, authors, min_price, cover, subscribers_count } } = this.props
 
     return(
       <div style={style.container}>
@@ -31,7 +31,7 @@ class BookCard extends React.Component {
           <div><b>Название:</b> { title }</div>
           <div><b>Описание:</b> { description }</div>
           <div><b>Минимальная цена:</b> { min_price }</div>
-          <AuthorsList authors_ids={authors_ids}/>
+          <AuthorsList authors={authors}/>
           <button style={style.subscribe_button}>Подписаться на книгу</button>
         </div>
       </div>
