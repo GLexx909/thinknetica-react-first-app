@@ -1,21 +1,37 @@
 import React from 'react'
-import AuthorCard from "./AuthorCard";
+import AuthorsList from "./AuthorsList";
+import DiscountModal from "./DiscountModal";
 
 class BookCard extends React.Component {
+
   render() {
+
     if (!this.props.book)
       return <div>Empty book</div>
 
-    const { book: { title, description, author_id, min_price, cover } } = this.props
+    const subscribersLimitToPopular = 10
+    const { book: { title, description, authors_ids, min_price, cover, subscribers_count } } = this.props
 
     return(
       <div style={style.container}>
-        <div><img style={style.img} src={ cover } alt=""/></div>
+        <div>
+          <img style={style.img} src={ cover } alt=""/>
+          {
+            subscribers_count >= subscribersLimitToPopular &&
+            <div style={style.popular_block}>
+              <i>Популярная книга</i>
+            </div>
+          }
+
+          <div style={style.discount}>
+            <DiscountModal />
+          </div>
+        </div>
         <div>
           <div><b>Название:</b> { title }</div>
           <div><b>Описание:</b> { description }</div>
           <div><b>Минимальная цена:</b> { min_price }</div>
-          <AuthorCard author={this.props.author}/>
+          <AuthorsList authors_ids={authors_ids}/>
           <button style={style.subscribe_button}>Подписаться на книгу</button>
         </div>
       </div>
@@ -32,7 +48,17 @@ const style = {
   img: {
     width: '200px'
   },
+  popular_block: {
+    backgroundColor: 'gold',
+    textAlign: 'center'
+  },
   subscribe_button: {
     marginTop: '20px'
+  },
+  discount: {
+    marginTop: '10px',
+    cursor: 'pointer',
+    border: '2px solid black',
+    textAlign: 'center'
   }
 }
