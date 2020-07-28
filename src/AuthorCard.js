@@ -5,7 +5,9 @@ class AuthorCard extends React.Component {
     if (!this.props.author)
       return <div>Empty author</div>
 
-    const { author: { name, email, avatar, description } } = this.props
+    const { author: { email, avatar, description } } = this.props
+
+    const name = this.props.author.name || 'Имя отсутствует'
 
     return(
       <div style={style.container}>
