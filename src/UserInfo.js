@@ -6,10 +6,14 @@ const UserInfo = () => {
     <AuthContext.Consumer>
       {
         au => (
-          <div style={style.container}>
-            <img style={style.img} src={au.avatarUrl} alt=""/>
-            <i>{au.email}</i>
-          </div>
+          au.email
+            ? (
+                <div style={style.container}>
+                  <img style={style.img} src={au.avatarUrl} alt=""/>
+                  <i>{au.email}</i>
+                </div>
+              )
+            : <button>Войти</button>
         )
       }
 
@@ -21,7 +25,6 @@ export default UserInfo
 
 const style = {
   container: {
-    width: '100px',
     display: 'flex'
   },
   img: {
