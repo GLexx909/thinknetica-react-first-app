@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Children } from 'react'
 import AuthorsList from "./AuthorsList";
 import DiscountModal from "./DiscountModal";
 
@@ -10,7 +10,7 @@ class BookCard extends React.Component {
       return <div>Empty book</div>
 
     const subscribersLimitToPopular = 10
-    const { book: { title, description, authors, min_price, cover, subscribers_count } } = this.props
+    const { book: { title, description, authors, min_price, cover, subscribers_count }, children } = this.props
 
     return(
       <div style={style.container}>
@@ -33,6 +33,9 @@ class BookCard extends React.Component {
           <div><b>Минимальная цена:</b> { min_price }</div>
           <AuthorsList authors={authors}/>
           <button style={style.subscribe_button}>Подписаться на книгу</button>
+          <div style={style.form}>
+            { Children.only(children) }
+          </div>
         </div>
       </div>
     )
@@ -60,5 +63,8 @@ const style = {
     cursor: 'pointer',
     border: '2px solid black',
     textAlign: 'center'
+  },
+  form: {
+    marginTop: '15px'
   }
 }

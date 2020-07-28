@@ -2,6 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import App from "./App";
 import './index.css'
+import AuthContext from "./AuthContext";
 
 const book = {
   "title": "Economy of Stalin",
@@ -48,7 +49,16 @@ const book = {
   ]
 }
 
+const userAgent = {
+  email: 'yandex@ya.ru',
+  firstName: 'Ivan',
+  lastName: 'Ivanov',
+  avatarUrl: 'https://a.wattpad.com/cover/197248780-256-k684621.jpg'
+}
+
 ReactDOM.render(
-  <App book={book}/>,
+  < AuthContext.Provider value={userAgent}>
+    <App book={book}/>
+  </AuthContext.Provider>,
   document.getElementById('root')
 )
