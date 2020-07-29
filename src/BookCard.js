@@ -1,6 +1,11 @@
 import React, { Children } from 'react'
 import AuthorsList from "./AuthorsList";
 import DiscountModal from "./DiscountModal";
+import Form from "./Form";
+import BookInfoRow from "./BookInfoRow";
+import SubscribeButton from "./SubscribeButton";
+import Cover from "./Cover";
+import Tags from "./Tag";
 
 class BookCard extends React.Component {
 
@@ -10,32 +15,22 @@ class BookCard extends React.Component {
       return <div>Empty book</div>
 
     const subscribersLimitToPopular = 10
-    const { book: { title, description, authors, min_price, cover, subscribers_count }, children } = this.props
+    const { book: { title, description, authors, min_price, cover, subscribers_count }} = this.props
 
     return(
       <div style={style.container}>
         <div>
-          <img style={style.img} src={ cover } alt=""/>
-          {
-            subscribers_count >= subscribersLimitToPopular &&
-            <div style={style.popular_block}>
-              <i>Популярная книга</i>
-            </div>
-          }
-
-          <div style={style.discount}>
-            <DiscountModal />
-          </div>
+          <Cover url={cover} />
+          <Tags isPopular={subscribers_count >= 10} />
+          <DiscountModal />
         </div>
         <div>
           <div><b>Название:</b> { title }</div>
           <div><b>Описание:</b> { description }</div>
-          <div><b>Минимальная цена:</b> { min_price }</div>
+          <BookInfoRow label='Минимальная цена'>{min_price}</BookInfoRow>
           <AuthorsList authors={authors}/>
-          <button style={style.subscribe_button}>Подписаться на книгу</button>
-          <div style={style.form}>
-            { Children.only(children) }
-          </div>
+          <SubscribeButton label="Подписаться на книгу"/>
+          <Form />
         </div>
       </div>
     )
@@ -48,23 +43,14 @@ const style = {
   container: {
     display: 'flex'
   },
-  img: {
-    width: '200px'
-  },
   popular_block: {
     backgroundColor: 'gold',
     textAlign: 'center'
-  },
-  subscribe_button: {
-    marginTop: '20px'
   },
   discount: {
     marginTop: '10px',
     cursor: 'pointer',
     border: '2px solid black',
     textAlign: 'center'
-  },
-  form: {
-    marginTop: '15px'
   }
 }

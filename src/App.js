@@ -2,7 +2,6 @@ import React from 'react'
 import BookCard from "./BookCard";
 import Header from "./Header";
 import Footer from "./Footer";
-import Form from "./Form";
 
 class App extends React.Component {
   render() {
@@ -10,9 +9,7 @@ class App extends React.Component {
     return (
       <>
         <Header />
-        <BookCard book={this.props.book}>
-          <Form />
-        </BookCard>
+        <BookCard book={this.props.book} />
         <Footer />
       </>
     )

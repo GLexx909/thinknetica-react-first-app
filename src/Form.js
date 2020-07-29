@@ -1,4 +1,5 @@
 import React from 'react'
+import Field from "./Field";
 
 class Form extends React.Component {
   constructor() {
@@ -30,17 +31,11 @@ class Form extends React.Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form onSubmit={this.handleSubmit} style={style.form}>
         <b>Задать вопрос автору:</b>
-        <br/>
-        <label htmlFor="name">Имя </label>
-        <input onChange={this.myInput} name="name" id="name" type="text"/>
-        <br/>
-        <br/>
-        <label htmlFor="email">Email </label>
-        <input onChange={this.myInput} name="email" id="email" type="text"/>
-        <br/>
-        <br/>
+        <Field label='Имя' name='name' myInput={this.myInput} />
+        <Field label='Email' name='email' myInput={this.myInput} />
+
         <button type="submit">Отправить</button>
       </form>
     )
@@ -48,3 +43,9 @@ class Form extends React.Component {
 }
 
 export default Form
+
+const style = {
+  form: {
+    marginTop: '15px'
+  }
+}

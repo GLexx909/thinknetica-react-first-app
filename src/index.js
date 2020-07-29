@@ -11,7 +11,6 @@ const book = {
   "language": "RU",
   "progress": 25,
   "cover": "https://ozon-st.cdn.ngenix.net/multimedia/1037906978.jpg",
-  "authors_ids": [1, 2, 3, 4],
   "min_price": 250,
   "desired_price": 500,
   "current_sum": 10000,
@@ -49,7 +48,7 @@ const book = {
   ]
 }
 
-const userAgent = {
+const currentUser = {
   email: 'yandex@ya.ru',
   firstName: 'Ivan',
   lastName: 'Ivanov',
@@ -57,7 +56,7 @@ const userAgent = {
 }
 
 ReactDOM.render(
-  < AuthContext.Provider value={userAgent}>
+  < AuthContext.Provider value={currentUser}>
     <App book={book}/>
   </AuthContext.Provider>,
   document.getElementById('root')
