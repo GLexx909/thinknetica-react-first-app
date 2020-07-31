@@ -1,5 +1,5 @@
 import React from 'react'
-import BookCard from "./BookCard";
+import BookCard from "./BookCard/index";
 import Header from "./Header";
 import Footer from "./Footer";
 

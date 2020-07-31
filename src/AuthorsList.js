@@ -24,7 +24,6 @@ class AuthorsList extends React.Component {
 
     return(
       <div>
-        <b>Список авторов:</b>
         <ul>
           {
             authors

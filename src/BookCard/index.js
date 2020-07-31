@@ -1,11 +1,11 @@
-import React, { Children } from 'react'
-import AuthorsList from "./AuthorsList";
-import DiscountModal from "./DiscountModal";
-import Form from "./Form";
-import BookInfoRow from "./BookInfoRow";
-import SubscribeButton from "./SubscribeButton";
-import Cover from "./Cover";
-import Tags from "./Tag";
+import React from 'react'
+import AuthorsList from "../AuthorsList";
+import DiscountModal from "../DiscountModal";
+import Form from "../Form";
+import Row from "./Row";
+import SubscribeButton from "../SubscribeButton";
+import Cover from "../Cover";
+import Tags from "../Tag";
 
 class BookCard extends React.Component {
 
@@ -21,14 +21,14 @@ class BookCard extends React.Component {
       <div style={style.container}>
         <div>
           <Cover url={cover} />
-          <Tags isPopular={subscribers_count >= 10} />
+          <Tags isPopular={subscribers_count >= subscribersLimitToPopular} />
           <DiscountModal />
         </div>
         <div>
-          <div><b>Название:</b> { title }</div>
-          <div><b>Описание:</b> { description }</div>
-          <BookInfoRow label='Минимальная цена'>{min_price}</BookInfoRow>
-          <AuthorsList authors={authors}/>
+          <Row label='Название'>{title}</Row>
+          <Row label='Описание'>{ description }</Row>
+          <Row label='Минимальная цена'>{min_price}р.</Row>
+          <Row label='Список авторов:'><AuthorsList authors={authors}/></Row>
           <SubscribeButton label="Подписаться на книгу"/>
           <Form />
         </div>

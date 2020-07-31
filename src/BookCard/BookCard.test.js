@@ -3,7 +3,7 @@ import { render,fireEvent, waitFor, screen } from "@testing-library/react";
 import '@testing-library/jest-dom/extend-expect'
 import '@babel/plugin-transform-async-to-generator'
 
-import BookCard from "./BookCard";
+import BookCard from "./index";
 
 test('renders book in a card', () => {
   const book = {
@@ -17,20 +17,21 @@ test('renders book in a card', () => {
     "min_price": 250,
     "desired_price": 500,
     "current_sum": 10000,
-    "expected_sum": 200000
+    "expected_sum": 200000,
+    "authors": [
+      {
+        "id": 1,
+        "name": "Валентин Катасонов",
+        "email": "v.katasonov@ya.ru",
+        "avatar": "https://communitarian.ru/uploads/post/image/0/15/1547/11062a0e6e786f0622c02eb45e65e3ef.jpg",
+        "description": "Russian scientist and economist, doctor of economic Sciences."
+      }
+    ]
   }
 
-  const author = {
-    "id": 1,
-    "name": "Valentin Katasonov",
-    "email": "v.katasonov@ya.ru",
-    "avatar": "https://communitarian.ru/uploads/post/image/0/15/1547/11062a0e6e786f0622c02eb45e65e3ef.jpg",
-    "description": "Russian scientist and economist, doctor of economic Sciences."
-  }
-
-  const { getByText } = render(<BookCard book={book} author={author}/>)
+  const { getByText } = render(<BookCard book={book}/>)
   expect(getByText('Economy of Stalin')).toBeInTheDocument()
-  expect(getByText('250')).toBeInTheDocument()
+  expect(getByText('250р.')).toBeInTheDocument()
 })
 
 test('renders an empty book in a card', () => {
