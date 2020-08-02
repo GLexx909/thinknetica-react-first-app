@@ -2,6 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import App from "./App";
 import './index.css'
+import AuthContext from "./AuthContext";
 
 const book = {
   "title": "Economy of Stalin",
@@ -10,7 +11,6 @@ const book = {
   "language": "RU",
   "progress": 25,
   "cover": "https://ozon-st.cdn.ngenix.net/multimedia/1037906978.jpg",
-  "authors_ids": [1, 2, 3, 4],
   "min_price": 250,
   "desired_price": 500,
   "current_sum": 10000,
@@ -48,7 +48,16 @@ const book = {
   ]
 }
 
+const currentUser = {
+  email: 'yandex@ya.ru',
+  firstName: 'Ivan',
+  lastName: 'Ivanov',
+  avatarUrl: 'https://a.wattpad.com/cover/197248780-256-k684621.jpg'
+}
+
 ReactDOM.render(
-  <App book={book}/>,
+  < AuthContext.Provider value={currentUser}>
+    <App book={book}/>
+  </AuthContext.Provider>,
   document.getElementById('root')
 )
