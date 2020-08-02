@@ -6,7 +6,7 @@ import AuthContext from "./AuthContext";
 
 test('renders email in a card', () => {
   const userAgent = {
-    email: 'yandex.ya@ru',
+    email: 'yandex@ya.ru',
     firstName: 'Ivan',
     lastName: 'Ivanov',
     avatarUrl: 'https://a.wattpad.com/cover/197248780-256-k684621.jpg'
@@ -17,7 +17,7 @@ test('renders email in a card', () => {
       <UserInfo/>
     </AuthContext.Provider>
   )
-  expect(getByText('yandex.ya@ru')).toBeInTheDocument()
+  expect(getByText('yandex@ya.ru')).toBeInTheDocument()
 })
 
 

@@ -2,34 +2,16 @@ import React from 'react'
 import { render,fireEvent, waitFor, screen } from "@testing-library/react";
 import '@testing-library/jest-dom/extend-expect'
 import '@babel/plugin-transform-async-to-generator'
+import books from  '../books.json'
 
 import BookCard from "./index";
 
 test('renders book in a card', () => {
-  const book = {
-    "title": "Economy of Stalin",
-    "description": "Book about Economy of Stalin",
-    "pages_count": 417,
-    "language": "RU",
-    "progress": 25,
-    "cover": "https://ozon-st.cdn.ngenix.net/multimedia/1037906978.jpg",
-    "author_id": 1,
-    "min_price": 250,
-    "desired_price": 500,
-    "current_sum": 10000,
-    "expected_sum": 200000,
-    "authors": [
-      {
-        "id": 1,
-        "name": "Валентин Катасонов",
-        "email": "v.katasonov@ya.ru",
-        "avatar": "https://communitarian.ru/uploads/post/image/0/15/1547/11062a0e6e786f0622c02eb45e65e3ef.jpg",
-        "description": "Russian scientist and economist, doctor of economic Sciences."
-      }
-    ]
-  }
+  const book = books[0]
+  const book_id = book.id
+  const otherBooks = books.filter( book => book.id !== book_id)
 
-  const { getByText } = render(<BookCard book={book}/>)
+  const { getByText } = render(<BookCard book={book} otherBooks={otherBooks}/>)
   expect(getByText('Economy of Stalin')).toBeInTheDocument()
   expect(getByText('250р.')).toBeInTheDocument()
 })
@@ -49,8 +31,11 @@ test('renders an empty book in a card', () => {
 })
 
 test('loads and displays greeting', async () => {
+  const book = books[0]
+  const book_id = book.id
+  const otherBooks = books.filter( book => book.id !== book_id)
 
-  const book = {
+  const bookMock = {
     "title": "Economy of Stalin",
     "description": "Book about Economy of Stalin",
     "pages_count": 417,
@@ -95,8 +80,7 @@ test('loads and displays greeting', async () => {
     ]
   }
 
-  const { getByRole, getByText } = render(<BookCard book={book}/>)
-
+  const { getByRole, getByText } = render(<BookCard book={bookMock} otherBooks={otherBooks}/>)
 
   fireEvent.click(getByText('Показать всех авторов (4)'))
 
