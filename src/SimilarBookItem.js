@@ -17,9 +17,7 @@ const SimilarBookItem = React.memo(({book, onCloseHandle}) => {
       </div>
     </div>
   )
-
-  // Работает только с этим условием ниже
-}, () => true)
+})
 
 export default SimilarBookItem
 

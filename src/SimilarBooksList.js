@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useCallback } from 'react'
 import SimilarBookItem from "./SimilarBookItem";
 
 const SimilarBooksList = ({books}) => {
@@ -16,6 +16,8 @@ const SimilarBooksList = ({books}) => {
     setItems(items => newBooksArray)
   }
 
+  const onChange = useCallback(bookId => onCloseHandle(bookId), []);
+
   console.log('List')
 
   return (
@@ -24,7 +26,7 @@ const SimilarBooksList = ({books}) => {
       <div style={style.container}>
         {
           items.map(book => <SimilarBookItem
-            onCloseHandle={onCloseHandle.bind(this)}
+            onCloseHandle={onChange}
             key={book.id}
             book={book}/>)
         }
