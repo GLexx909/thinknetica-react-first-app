@@ -16,7 +16,7 @@ const SimilarBooksList = ({books}) => {
     setItems(items => newBooksArray)
   }
 
-  const onChange = useCallback(bookId => onCloseHandle(bookId), []);
+  const onChange = useCallback(onCloseHandle, []);
 
   console.log('List')
 
