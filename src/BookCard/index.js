@@ -6,6 +6,7 @@ import Row from "./Row";
 import SubscribeButton from "../SubscribeButton";
 import Cover from "../Cover";
 import Tags from "../Tag";
+import SimilarBooksList from "../SimilarBooksList";
 
 class BookCard extends React.Component {
 
@@ -18,20 +19,23 @@ class BookCard extends React.Component {
     const { book: { title, description, authors, min_price, cover, subscribers_count }} = this.props
 
     return(
-      <div style={style.container}>
-        <div>
-          <Cover url={cover} />
-          <Tags isPopular={subscribers_count >= subscribersLimitToPopular} />
-          <DiscountModal />
+      <div>
+        <div style={style.container}>
+          <div>
+            <Cover url={cover} />
+            <Tags isPopular={subscribers_count >= subscribersLimitToPopular} />
+            <DiscountModal />
+          </div>
+          <div>
+            <Row label='Название'>{title}</Row>
+            <Row label='Описание'>{ description }</Row>
+            <Row label='Минимальная цена'>{min_price}р.</Row>
+            <Row label='Список авторов:'><AuthorsList authors={authors}/></Row>
+            <SubscribeButton label="Подписаться на книгу"/>
+            <Form />
+          </div>
         </div>
-        <div>
-          <Row label='Название'>{title}</Row>
-          <Row label='Описание'>{ description }</Row>
-          <Row label='Минимальная цена'>{min_price}р.</Row>
-          <Row label='Список авторов:'><AuthorsList authors={authors}/></Row>
-          <SubscribeButton label="Подписаться на книгу"/>
-          <Form />
-        </div>
+        <SimilarBooksList books={this.props.otherBooks}/>
       </div>
     )
   }
