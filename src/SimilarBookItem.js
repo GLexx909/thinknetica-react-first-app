@@ -1,7 +1,6 @@
 import React from 'react'
 
 const SimilarBookItem = React.memo(({book, onCloseHandle}) => {
-  console.log(book.id)
   return (
     <div style={style.container}>
       <div style={style.img_block}>

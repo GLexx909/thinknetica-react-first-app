@@ -7,6 +7,7 @@ import SubscribeButton from "../SubscribeButton";
 import Cover from "../Cover";
 import Tags from "../Tag";
 import SimilarBooksList from "../SimilarBooksList";
+import SubscribeForm from "../SubscribeForm";
 
 class BookCard extends React.Component {
 
@@ -31,6 +32,7 @@ class BookCard extends React.Component {
             <Row label='Описание'>{ description }</Row>
             <Row label='Минимальная цена'>{min_price}р.</Row>
             <Row label='Список авторов:'><AuthorsList authors={authors}/></Row>
+            <SubscribeForm min_price={min_price}/>
             <SubscribeButton label="Подписаться на книгу"/>
             <Form />
           </div>
