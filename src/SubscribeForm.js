@@ -6,8 +6,8 @@ class SubscribeForm extends Component {
     super(props);
 
     this.state = {
-      companyDividends: 0,
-      currentSum: -1
+      companyDividends: props.min_price * 0.1,
+      currentSum: props.min_price
     }
 
     this.handleSum = this.handleSum.bind(this)
@@ -21,19 +21,15 @@ class SubscribeForm extends Component {
   }
 
   render() {
-    const { min_price } = this.props
-    const companyDividendsLabel = this.state.currentSum < 0 ? '' : `Введите сумму больше ${min_price}`
+    const { min_price, desired_price } = this.props
 
     return(
       <form onSubmit={e => e.preventDefault()} style={style.form}>
         <b>Купить:</b>
-        <input onChange={this.handleSum} type="number"/>
+        <input onChange={this.handleSum} type="range" min={min_price} max={desired_price} value={this.state.currentSum}/>
+        <b>{this.state.currentSum}</b>
         <button type="submit">Оплатить</button>
-        {
-          this.state.currentSum < min_price
-          ? <b>{companyDividendsLabel}</b>
-          : <b>{this.state.companyDividends}</b>
-        }
+        { this.state.currentSum >= min_price && <b>{this.state.companyDividends}</b> }
       </form>
     )
   }
