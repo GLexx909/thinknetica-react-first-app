@@ -18,8 +18,6 @@ const SimilarBooksList = ({books}) => {
 
   const onChange = useCallback(onCloseHandle, []);
 
-  console.log('List')
-
   return (
     <>
       <b>Похожие книги:</b>
