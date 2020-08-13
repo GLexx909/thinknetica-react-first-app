@@ -10,7 +10,12 @@ class SubscribeForm extends Component {
       currentSum: props.min_price
     }
 
+    this.moneyInputRef = React.createRef()
     this.handleSum = this.handleSum.bind(this)
+  }
+
+  componentDidMount() {
+    this.moneyInputRef.current.focus()
   }
 
   handleSum(e) {
@@ -26,6 +31,8 @@ class SubscribeForm extends Component {
     return(
       <form onSubmit={e => e.preventDefault()} style={style.form}>
         <b>Купить:</b>
+        <input ref={this.moneyInputRef} type="text" name="moneyInput" placeholder='тестовый input'/>
+
         <input onChange={this.handleSum} type="range" min={min_price} max={desired_price} value={this.state.currentSum}/>
         <b>{this.state.currentSum}</b>
         <button type="submit">Оплатить</button>

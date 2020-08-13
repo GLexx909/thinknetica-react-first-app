@@ -1,20 +1,22 @@
 import React from 'react'
-import BookCard from "./BookCard";
 import Header from "./Header";
 import Footer from "./Footer";
+import BookContainer from "./BookContainer";
+import ButtonToTop from "./ButtonToTop";
 
-const App = ({ books }) =>  {
-  const book = books[0]
-  const book_id = book.id
-  const otherBooks = books.filter( book => book.id !== book_id)
+class App extends React.Component {
 
-  return (
-    <>
-      <Header />
-      <BookCard book={book} otherBooks={otherBooks}/>
-      <Footer />
-    </>
-  )
+  render() {
+    return (
+      <>
+        <Header />
+        <BookContainer />
+        <div style={{height: '900px'}}>___</div>
+        <ButtonToTop />
+        <Footer />
+      </>
+    )
+  }
 }
 
 export default App

@@ -15,7 +15,6 @@ export default Footer
 
 const style = {
   container: {
-    position: 'absolute',
     width: '100%',
     bottom: 0,
     display: 'flex',
