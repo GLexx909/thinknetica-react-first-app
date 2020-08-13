@@ -8,6 +8,8 @@ import Cover from "../Cover";
 import Tags from "../Tag";
 import SimilarBooksList from "../SimilarBooksList";
 import SubscribeForm from "../SubscribeForm";
+import withLoader from "../HOC/withLoader";
+import withBooks from "../HOC/withBooks";
 
 class BookCard extends React.Component {
 
@@ -43,7 +45,7 @@ class BookCard extends React.Component {
   }
 }
 
-export default BookCard
+export default withBooks(withLoader(BookCard))
 
 const style = {
   container: {

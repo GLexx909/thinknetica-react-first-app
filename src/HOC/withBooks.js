@@ -1,8 +1,7 @@
-import React, {Component} from 'react'
-import BookCard from "../BookCard";
+import React from 'react'
 import axios from 'axios'
-import * as _ from 'lodash'
-import {stringify} from 'qs'
+import {stringify} from "qs";
+import * as _ from "lodash";
 
 const API_TOKEN = ''
 
@@ -14,7 +13,7 @@ const httpClient = axios.create({
   }
 })
 
-class BookContainer extends Component {
+const withBooks = EnhancedComponent => class WithBooks extends React.Component {
   constructor(props) {
     super(props);
 
@@ -90,11 +89,9 @@ class BookContainer extends Component {
     const { book, otherBooks } = this.state
 
     return (
-      book
-      ? <BookCard book={book} otherBooks={otherBooks}/>
-      : <div>Loading...</div>
+      <EnhancedComponent isLoading={!book} book={book} otherBooks={otherBooks}/>
     )
   }
 }
 
-export default BookContainer
+export default withBooks
