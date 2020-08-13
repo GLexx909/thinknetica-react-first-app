@@ -1,6 +1,8 @@
-import React, { Component } from 'react'
+import React, {Component} from 'react'
 import BookCard from "../BookCard";
 import axios from 'axios'
+import * as _ from 'lodash'
+import {stringify} from 'qs'
 
 const API_TOKEN = ''
 
@@ -28,9 +30,14 @@ class BookContainer extends Component {
 
   _fetch_data() {
     httpClient.get('/Books', {
-      maxRecords: 5,
-      view: 'Grid view',
-      sort: [{field: 'id', direction: 'asc'}]
+      params: {
+        maxRecords: 5,
+        view: 'Grid view',
+        sort: [{field: 'id', direction: 'asc'}]
+      },
+      paramsSerializer: (params) => {
+        return stringify(params, { arrayFormat: 'brackets' })
+      }
     })
       .then(result => result.data)
       .then(this._mapFromAirtable)
@@ -47,20 +54,17 @@ class BookContainer extends Component {
   _mapFromAirtable(data) {
 
     const _mapAuthors = (fields) => {
-      const size = fields.authors.length
-      let authors = []
 
-      for (let i = 0; i < size; i++) {
-        authors.push({
-          id: fields['id (from Authors)'][i],
-          name: fields['name (from Authors)'][i],
-          email: fields['email (from Authors)'][i],
-          avatar: fields['avatar (from Authors)'][i],
-          description: fields['description (from Authors)'][i]
-        })
-      }
-
-      return authors
+      return _.zip(
+        fields["id (from Authors)"],
+        fields["name (from Authors)"],
+        fields["email (from Authors)"],
+        fields["avatar (from Authors)"],
+        fields["description (from Authors)"]
+      ).map(record => _.zipObject(
+        ['id', 'name', 'email', 'avatar', 'description'],
+        record
+      ))
     }
 
     return data.records.map(

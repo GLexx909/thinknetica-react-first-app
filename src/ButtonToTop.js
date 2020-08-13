@@ -1,10 +1,21 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 const ButtonToTop = () => {
+
+  const [ currentHeightPosition, setCurrentHeightPosition ] = useState(0);
+
+  const handleScroll = () => {
+    setCurrentHeightPosition(window.pageYOffset)
+  }
+
+  window.addEventListener('scroll', handleScroll)
+
   return (
-    <a style={style.container} href='#'>
-      <b style={style.text}>ВВЕРХ</b>
-    </a>
+    currentHeightPosition > 200 && (
+      <a style={style.container} href='#'>
+        <b style={style.text}>ВВЕРХ</b>
+      </a>
+    )
   )
 }
 
