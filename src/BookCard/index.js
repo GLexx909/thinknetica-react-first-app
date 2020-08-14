@@ -9,43 +9,45 @@ import Tags from "../Tag";
 import SimilarBooksList from "../SimilarBooksList";
 import SubscribeForm from "../SubscribeForm";
 import withLoader from "../HOC/withLoader";
-import withBooks from "../HOC/withBooks";
+import useBooks from "../hooks/useBooks";
 
-class BookCard extends React.Component {
+const BookCard = () => {
+  const books = useBooks()
 
-  render() {
+  if (!books)
+    return <div>Empty book</div>
 
-    if (!this.props.book)
-      return <div>Empty book</div>
+  const book = books[0]
+  const book_id = book.id
+  const otherBooks = books.filter( book => book.id !== book_id)
 
-    const subscribersLimitToPopular = 10
-    const { book: { title, description, authors, min_price, desired_price, cover, subscribers_count }} = this.props
+  const { title, description, authors, min_price, desired_price, cover, subscribers_count } = book
+  const subscribersLimitToPopular = 10
 
-    return(
-      <div>
-        <div style={style.container}>
-          <div>
-            <Cover url={cover} />
-            <Tags isPopular={subscribers_count >= subscribersLimitToPopular} />
-            <DiscountModal />
-          </div>
-          <div>
-            <Row label='Название'>{title}</Row>
-            <Row label='Описание'>{ description }</Row>
-            <Row label='Минимальная цена'>{min_price}р.</Row>
-            <Row label='Список авторов:'><AuthorsList authors={authors}/></Row>
-            <SubscribeForm min_price={min_price} desired_price={desired_price}/>
-            <SubscribeButton label="Подписаться на книгу"/>
-            <Form />
-          </div>
+  return(
+    <div>
+      <div style={style.container}>
+        <div>
+          <Cover url={cover} />
+          <Tags isPopular={subscribers_count >= subscribersLimitToPopular} />
+          <DiscountModal />
         </div>
-        <SimilarBooksList books={this.props.otherBooks}/>
+        <div>
+          <Row label='Название'>{title}</Row>
+          <Row label='Описание'>{ description }</Row>
+          <Row label='Минимальная цена'>{min_price}р.</Row>
+          <Row label='Список авторов:'><AuthorsList authors={authors}/></Row>
+          <SubscribeForm min_price={min_price} desired_price={desired_price}/>
+          <SubscribeButton label="Подписаться на книгу"/>
+          <Form />
+        </div>
       </div>
-    )
-  }
+      <SimilarBooksList books={otherBooks}/>
+    </div>
+  )
 }
 
-export default withBooks(withLoader(BookCard))
+export default withLoader(BookCard)
 
 const style = {
   container: {
