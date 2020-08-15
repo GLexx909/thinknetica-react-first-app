@@ -3,11 +3,11 @@ import AuthorsList from "../AuthorsList";
 import DiscountModal from "../DiscountModal";
 import Form from "../Form";
 import Row from "./Row";
-import SubscribeButton from "../SubscribeButton";
+import Button from "./Subscribe/Button";
 import Cover from "../Cover";
 import Tags from "../Tag";
-import SimilarBooksList from "../SimilarBooksList";
-import SubscribeForm from "../SubscribeForm";
+import List from "../SimilarBooks/List";
+import SubscribeForm from "./Subscribe/Form";
 import withLoader from "../HOC/withLoader";
 import useBooks from "../hooks/useBooks";
 
@@ -38,11 +38,11 @@ const BookCard = () => {
           <Row label='Минимальная цена'>{min_price}р.</Row>
           <Row label='Список авторов:'><AuthorsList authors={authors}/></Row>
           <SubscribeForm min_price={min_price} desired_price={desired_price}/>
-          <SubscribeButton label="Подписаться на книгу"/>
+          <Button label="Подписаться на книгу"/>
           <Form />
         </div>
       </div>
-      <SimilarBooksList books={otherBooks}/>
+      <List books={otherBooks}/>
     </div>
   )
 }

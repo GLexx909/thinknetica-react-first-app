@@ -72,7 +72,7 @@ const useBooks = () => {
     _fetch_data().then(books => {
       setBooks(books)
     })
-  }, [books])
+  }, [])
 
   return books
 }

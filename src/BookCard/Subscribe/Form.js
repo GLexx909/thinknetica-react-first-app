@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-class SubscribeForm extends Component {
+class Form extends Component {
 
   constructor(props) {
     super(props);
@@ -42,7 +42,7 @@ class SubscribeForm extends Component {
   }
 }
 
-export default SubscribeForm
+export default Form
 
 const style = {
   form: {
