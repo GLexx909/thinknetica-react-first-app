@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from 'react'
-import SimilarBookItem from "./SimilarBookItem";
+import Item from "./Item";
 
-const SimilarBooksList = ({books}) => {
+const List = ({books}) => {
   const [items, setItems] = useState(books.slice(0, 3))
 
   const onCloseHandle = (bookId) => {
@@ -23,7 +23,7 @@ const SimilarBooksList = ({books}) => {
       <b>Похожие книги:</b>
       <div style={style.container}>
         {
-          items.map(book => <SimilarBookItem
+          items.map(book => <Item
             onCloseHandle={onChange}
             key={book.id}
             book={book}/>)
@@ -33,7 +33,7 @@ const SimilarBooksList = ({books}) => {
   )
 }
 
-export default  SimilarBooksList
+export default  List
 
 const style = {
   container: {

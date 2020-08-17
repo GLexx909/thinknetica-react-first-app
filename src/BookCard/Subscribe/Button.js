@@ -1,8 +1,8 @@
 import React from 'react'
 
-const SubscribeButton = ({label}) => <button  style={style.subscribe_button} >{label}</button>
+const Button = ({label}) => <button style={style.subscribe_button} >{label}</button>
 
-export default SubscribeButton
+export default Button
 
 const style = {
   subscribe_button: {

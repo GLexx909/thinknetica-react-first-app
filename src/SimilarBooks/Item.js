@@ -1,6 +1,6 @@
 import React from 'react'
 
-const SimilarBookItem = React.memo(({book, onCloseHandle}) => {
+const Item = React.memo(({book, onCloseHandle}) => {
   return (
     <div style={style.container}>
       <div style={style.img_block}>
@@ -18,7 +18,7 @@ const SimilarBookItem = React.memo(({book, onCloseHandle}) => {
   )
 })
 
-export default SimilarBookItem
+export default Item
 
 const style = {
   container: {
