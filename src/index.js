@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom'
 import App from "./App";
 import './index.css'
 import AuthContext from "./AuthContext";
-import books from  './books.json'
 
 const currentUser = {
   email: 'yandex@ya.ru',
@@ -14,7 +13,7 @@ const currentUser = {
 
 ReactDOM.render(
   < AuthContext.Provider value={currentUser}>
-    <App books={books}/>
+    <App />
   </AuthContext.Provider>,
   document.getElementById('root')
 )
