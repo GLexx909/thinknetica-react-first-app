@@ -1,34 +1,28 @@
 import React from 'react'
 import UserInfo from "../../UserInfo";
+import styles from './Header.module.css'
 
-const Header = () => {
-  return(
-    <div style={style.container}>
-      <div>
-        <img style={style.img} src="https://cdn.dribbble.com/users/1860775/screenshots/6550972/s_kitap_logo.png" alt=""/>
-        <span style={style.title}>Книжный Сервис</span>
+class Header extends React.Component {
+
+  render() {
+
+    const {theme, changeTheme} = this.props
+
+    const classes = {
+      container: styles.container + ' ' + theme
+    }
+
+    return(
+      <div className={classes.container}>
+        <div>
+          <img className={styles.img} src="https://cdn.dribbble.com/users/1860775/screenshots/6550972/s_kitap_logo.png" alt=""/>
+          <span className={styles.title}>Книжный Сервис</span>
+        </div>
+        <UserInfo />
+        <button onClick={changeTheme}>Сменить тему</button>
       </div>
-      <UserInfo />
-    </div>
-  )
+    )
+  }
 }
 
 export default Header
-
-const style = {
-  container: {
-    display: 'flex',
-    justifyContent: 'space-between',
-    height: '130px',
-    borderBottom: '2px solid black',
-    backgroundColor: '#00BFFF'
-  },
-  img: {
-    width: '130px',
-    height: 'auto',
-  },
-  title: {
-    fontSize: '30px',
-    fontWeight: '600'
-  }
-}
