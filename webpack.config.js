@@ -18,7 +18,20 @@ module.exports = {
   module: {
     rules: [
       { test: /\.js/, use: 'babel-loader' },
-      { test: /\.css/, use: [MiniCssExtractPlugin.loader, 'css-loader'] }
+      { test: /\.css/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          {
+            loader: 'css-loader',
+            options: {
+              modules: {
+                auto: true,
+                localIdentName: '[path][name]__[local]--[hash:base64:5]'
+              }
+            }
+          },
+        ]
+      }
     ]
   },
   plugins: [
