@@ -1,5 +1,6 @@
 import React from 'react'
 import Field from "./Field";
+import styles from './BookCard/Subscribe/Form.module.css'
 
 class Form extends React.Component {
   constructor() {
@@ -31,7 +32,7 @@ class Form extends React.Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit} style={style.form}>
+      <form onSubmit={this.handleSubmit} className={styles.form}>
         <b>Задать вопрос автору:</b>
         <Field label='Имя' name='name' myInput={this.myInput} />
         <Field label='Email' name='email' myInput={this.myInput} />
@@ -43,9 +44,3 @@ class Form extends React.Component {
 }
 
 export default Form
-
-const style = {
-  form: {
-    marginTop: '15px'
-  }
-}

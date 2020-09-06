@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import App from "./App";
 import './index.css'
-import AuthContext from "./AuthContext";
+import AuthContext from "./Contexts/AuthContext";
 
 const currentUser = {
   email: 'yandex@ya.ru',

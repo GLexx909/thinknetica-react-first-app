@@ -1,11 +1,12 @@
 import React from 'react'
+import styles from './Tags.module.css'
 
 const Tags = ({isPopular}) => {
   return (
     <>
       {
         isPopular &&
-        <div style={style.popular_block}>
+        <div className={styles.popular_block}>
           <i>Популярная книга</i>
         </div>
       }
@@ -14,10 +15,3 @@ const Tags = ({isPopular}) => {
 }
 
 export default Tags
-
-const style = {
-  popular_block: {
-    backgroundColor: 'gold',
-    textAlign: 'center'
-  }
-}

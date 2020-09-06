@@ -5,11 +5,12 @@ import Form from "../Form";
 import Row from "./Row";
 import Button from "./Subscribe/Button";
 import Cover from "../Cover";
-import Tags from "../Tag";
+import Tags from "../Tags";
 import List from "../SimilarBooks/List";
 import SubscribeForm from "./Subscribe/Form";
 import withLoader from "../HOC/withLoader";
 import useBooks from "../hooks/useBooks";
+import styles from './BookCard.module.css'
 
 const BookCard = () => {
   const books = useBooks()
@@ -26,7 +27,7 @@ const BookCard = () => {
 
   return(
     <div>
-      <div style={style.container}>
+      <div className={styles.container}>
         <div>
           <Cover url={cover} />
           <Tags isPopular={subscribers_count >= subscribersLimitToPopular} />
@@ -48,19 +49,3 @@ const BookCard = () => {
 }
 
 export default withLoader(BookCard)
-
-const style = {
-  container: {
-    display: 'flex'
-  },
-  popular_block: {
-    backgroundColor: 'gold',
-    textAlign: 'center'
-  },
-  discount: {
-    marginTop: '10px',
-    cursor: 'pointer',
-    border: '2px solid black',
-    textAlign: 'center'
-  }
-}
