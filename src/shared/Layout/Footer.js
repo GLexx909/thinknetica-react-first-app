@@ -3,11 +3,9 @@ import styles from './Footer.module.css'
 import ThemeContext from "../../Contexts/ThemeContext";
 import classNames from 'classnames/bind'
 
-let cx = classNames.bind(styles);
-
 const Footer = () => {
   const { theme } = useContext(ThemeContext);
-  const containerClasses = cx(styles.container, theme)
+  const containerClasses = classNames(styles.container, theme)
 
   return(
     <div className={containerClasses}>

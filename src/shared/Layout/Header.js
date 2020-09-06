@@ -4,11 +4,9 @@ import styles from './Header.module.css'
 import ThemeContext from "../../Contexts/ThemeContext";
 import classNames from 'classnames/bind'
 
-let cx = classNames.bind(styles);
-
 const Header = () => {
   const { theme, changeTheme } = useContext(ThemeContext);
-  const containerClasses = cx(styles.container, theme)
+  const containerClasses = classNames(styles.container, theme)
 
   return(
     <div className={containerClasses}>
