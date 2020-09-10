@@ -8,11 +8,16 @@ const ButtonToTop = () => {
     setCurrentHeightPosition(window.pageYOffset)
   }
 
+  const goToTop = () => {
+    window.scroll(0, 0)
+  }
+
+
   window.addEventListener('scroll', handleScroll)
 
   return (
     currentHeightPosition > 200 && (
-      <a style={style.container} href='#'>
+      <a style={style.container} onClick={goToTop}>
         <b style={style.text}>ВВЕРХ</b>
       </a>
     )

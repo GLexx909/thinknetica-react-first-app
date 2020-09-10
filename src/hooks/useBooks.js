@@ -31,7 +31,6 @@ function _fetch_data() {
 }
 
 function _mapFromAirtable(data) {
-
   const _mapAuthors = (fields) => {
 
     return _.zip(

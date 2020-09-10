@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link} from "react-router-dom";
 
 const Item = React.memo(({book, onCloseHandle}) => {
   return (
@@ -8,7 +9,7 @@ const Item = React.memo(({book, onCloseHandle}) => {
         <b onClick={() => onCloseHandle(book.id)} style={style.close_x}>X</b>
       </div>
       <div>
-        <b>{ book.title }</b>
+        <b><Link to={`/books/${book.id}`}>{book.title}</Link></b>
         <br/>
         { book.authors.map((author) => (
           <p key={author.id} style={style.author}>{author.name}</p>

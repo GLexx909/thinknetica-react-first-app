@@ -10,15 +10,17 @@ import List from "../SimilarBooks/List";
 import SubscribeForm from "./Subscribe/Form";
 import withLoader from "../HOC/withLoader";
 import useBooks from "../hooks/useBooks";
+import Layout from '../Layout'
 import styles from './BookCard.module.css'
+import { Helmet } from 'react-helmet'
 
-const BookCard = () => {
+const BookCard = ({ match: { params } }) => {
   const books = useBooks()
 
   if (!books)
     return <div>Empty book</div>
 
-  const book = books[0]
+  const book = books.find(item => item.id === parseInt(params.id))
   const book_id = book.id
   const otherBooks = books.filter( book => book.id !== book_id)
 
@@ -26,7 +28,10 @@ const BookCard = () => {
   const subscribersLimitToPopular = 10
 
   return(
-    <div>
+    <Layout>
+      <Helmet>
+        <title>{book.title}</title>
+      </Helmet>
       <div className={styles.container}>
         <div>
           <Cover url={cover} />
@@ -44,7 +49,7 @@ const BookCard = () => {
         </div>
       </div>
       <List books={otherBooks}/>
-    </div>
+    </Layout>
   )
 }
 
