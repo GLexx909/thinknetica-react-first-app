@@ -11,10 +11,13 @@ const Header = () => {
 
   return(
     <div className={containerClasses}>
-      <div>
+      <div className={styles.navLinks}>
         <img className={styles.img} src="https://cdn.dribbble.com/users/1860775/screenshots/6550972/s_kitap_logo.png" alt=""/>
         <Link to={`/`}>
           <span className={styles.title}>Книжный Сервис</span>
+        </Link>
+        <Link to={`/wishlist`}>
+          <span className={styles.title}>Желаемое</span>
         </Link>
       </div>
       <UserInfo />

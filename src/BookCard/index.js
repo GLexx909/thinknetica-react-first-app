@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import AuthorsList from "../AuthorsList";
 import DiscountModal from "../DiscountModal";
 import Form from "../Form";
@@ -13,8 +13,13 @@ import useBooks from "../hooks/useBooks";
 import Layout from '../Layout'
 import styles from './BookCard.module.css'
 import { Helmet } from 'react-helmet'
+import WishlistContext from "../Contexts/WishlistContext";
+import classNames from 'classnames/bind'
 
 const BookCard = ({ match: { params } }) => {
+
+  const { wishes, toggleWishes } = useContext(WishlistContext);
+
   const books = useBooks()
 
   if (!books)
@@ -27,6 +32,12 @@ const BookCard = ({ match: { params } }) => {
   const { title, description, authors, min_price, desired_price, cover, subscribers_count } = book
   const subscribersLimitToPopular = 10
 
+  const isFavorite = wishes.includes(book_id)
+  const wishButtonText = isFavorite ? 'Удалить из желаемого' : 'Добавить в желаемое'
+
+  const favoriteButtonClasses = classNames( isFavorite && styles.favoriteButton )
+
+
   return(
     <Layout>
       <Helmet>
@@ -37,6 +48,7 @@ const BookCard = ({ match: { params } }) => {
           <Cover url={cover} />
           <Tags isPopular={subscribers_count >= subscribersLimitToPopular} />
           <DiscountModal />
+          <button className={favoriteButtonClasses} onClick={() => toggleWishes(book_id)}>{wishButtonText}</button>
         </div>
         <div>
           <Row label='Название'>{title}</Row>

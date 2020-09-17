@@ -9,6 +9,7 @@ const Main = () => {
       <Helmet>
         <title>Книжный сервис</title>
       </Helmet>
+      <b>Главная страница</b>
       <BookList />
     </Layout>
   )
