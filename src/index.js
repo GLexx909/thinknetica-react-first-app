@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom'
 import App from "./App";
 import './index.css'
 import AuthContext from "./Contexts/AuthContext";
+import WishlistProvider from "./Providers/WishlistProvider";
 
 const currentUser = {
   email: 'yandex@ya.ru',
@@ -12,8 +13,10 @@ const currentUser = {
 }
 
 ReactDOM.render(
-  < AuthContext.Provider value={currentUser}>
-    <App />
-  </AuthContext.Provider>,
+  <WishlistProvider>
+    < AuthContext.Provider value={currentUser}>
+      <App />
+    </AuthContext.Provider>
+  </WishlistProvider>,
   document.getElementById('root')
 )

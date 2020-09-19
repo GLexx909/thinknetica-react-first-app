@@ -1,6 +1,6 @@
 import React from 'react'
 import Field from "./Field";
-import styles from './BookCard/Subscribe/Form.module.css'
+import styles from './components/BookCard/Subscribe/Form.module.css'
 
 class Form extends React.Component {
   constructor() {
