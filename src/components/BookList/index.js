@@ -3,15 +3,13 @@ import { Link } from "react-router-dom";
 import useBooks from "../../hooks/useBooks";
 import {bookPath} from "../../helpers/routes";
 
-const BookList = ({ wishesBooksIds }) => {
-  const books = useBooks()
+const BookList = ({wishesBooks}) => {
 
-  const booksAirtable = books || []
-  const booksList = wishesBooksIds ? booksAirtable.filter(book => wishesBooksIds.includes(book.id)) : booksAirtable
+  const books = wishesBooks || useBooks()
 
   return (
-    booksList.length
-    ? booksList.map((book) => {
+    books
+    ? books.map((book) => {
       return (
         <p key={book.id}>
           <Link to={bookPath(book.id)}>{book.title}</Link>

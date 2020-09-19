@@ -4,13 +4,12 @@ import WishlistContext from "../Contexts/WishlistContext";
 const WishlistProvider = ({children}) => {
 
   const localWishlistArray = JSON.parse(localStorage.getItem('wishlist') || '[]')
-
   const [wishes, setWishes] = useState(localWishlistArray)
 
-  const toggleWishes = bookId => {
-    const updatedWishes = wishes.includes(bookId)
-      ? wishes.filter(item => item !== bookId)
-      : wishes.concat(bookId)
+  const toggleWishes = book => {
+    const updatedWishes = wishes.includes(book)
+      ? wishes.filter(item => item !== book)
+      : wishes.concat(book)
 
     localStorage.setItem('wishlist', JSON.stringify(updatedWishes))
     setWishes(updatedWishes)

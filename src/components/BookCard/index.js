@@ -39,7 +39,7 @@ const BookCard = ({ match: { params } }) => {
           <Cover url={cover} />
           <Tags isPopular={subscribers_count >= subscribersLimitToPopular} />
           <DiscountModal />
-          <WishButton bookId={book_id}/>
+          <WishButton book={book}/>
         </div>
         <div>
           <Row label='Название'>{title}</Row>
