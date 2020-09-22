@@ -73,7 +73,19 @@ const useBooks = () => {
     })
   }, [])
 
-  return books
+  const findBook = paramsId => {
+    return books.find(item => item.id === parseInt(paramsId))
+  }
+
+  const otherBooks = paramsId => {
+    return books.filter( book => book.id !== paramsId)
+  }
+
+  return {
+    books,
+    findBook,
+    otherBooks
+  }
 }
 
 export default useBooks

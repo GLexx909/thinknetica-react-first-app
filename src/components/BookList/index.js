@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 import useBooks from "../../hooks/useBooks";
 import {bookPath} from "../../helpers/routes";
 
-const BookList = ({wishesBooks}) => {
+const BookList = () => {
 
-  const books = wishesBooks || useBooks()
+  const { books } = useBooks()
 
   return (
     books

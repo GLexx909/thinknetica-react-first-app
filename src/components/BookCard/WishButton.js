@@ -2,15 +2,14 @@ import React, { useContext } from 'react'
 import classNames from "classnames/bind";
 import styles from "./BookCard.module.css";
 import WishlistContext from "../../Contexts/WishlistContext";
-import _ from 'lodash'
 
 const WishButton = ({book}) => {
-  const { wishes, toggleWishes } = useContext(WishlistContext);
+  const { toggleWishes, isFavorite } = useContext(WishlistContext);
 
-  const isFavorite = _.find(wishes, { 'id': book.id })
+  const bookIsFavorite = isFavorite(book.id)
 
-  const wishButtonText = isFavorite ? 'Удалить из желаемого' : 'Добавить в желаемое'
-  const favoriteButtonClasses = classNames( isFavorite && styles.favoriteButton )
+  const wishButtonText = bookIsFavorite ? 'Удалить из желаемого' : 'Добавить в желаемое'
+  const favoriteButtonClasses = classNames({ [styles.favoriteButton]: bookIsFavorite })
 
   return (
     <button className={favoriteButtonClasses} onClick={() => toggleWishes(book)}>{wishButtonText}</button>

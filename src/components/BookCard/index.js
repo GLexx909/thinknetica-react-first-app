@@ -17,14 +17,13 @@ import WishButton from "./WishButton";
 
 const BookCard = ({ match: { params } }) => {
 
-  const books = useBooks()
+  const { books, findBook, otherBooks } = useBooks()
 
   if (!books)
     return <div>Empty book</div>
 
-  const book = books.find(item => item.id === parseInt(params.id))
-  const book_id = book.id
-  const otherBooks = books.filter( book => book.id !== book_id)
+  const book = findBook(params.id)
+  const otherBooksList = otherBooks(book.id)
 
   const { title, description, authors, min_price, desired_price, cover, subscribers_count } = book
   const subscribersLimitToPopular = 10
@@ -51,7 +50,7 @@ const BookCard = ({ match: { params } }) => {
           <Form />
         </div>
       </div>
-      <List books={otherBooks}/>
+      <List books={otherBooksList}/>
     </Layout>
   )
 }

@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import WishlistContext from "../Contexts/WishlistContext";
+import _ from "lodash";
 
 const WishlistProvider = ({children}) => {
 
@@ -15,8 +16,12 @@ const WishlistProvider = ({children}) => {
     setWishes(updatedWishes)
   }
 
+  const isFavorite = bookId => {
+    return _.find(wishes, { 'id': bookId })
+  }
+
   return (
-    <WishlistContext.Provider value={{wishes: wishes, toggleWishes: toggleWishes}}>
+    <WishlistContext.Provider value={{wishes: wishes, toggleWishes: toggleWishes, isFavorite: isFavorite}}>
       {children}
     </WishlistContext.Provider>
   )
