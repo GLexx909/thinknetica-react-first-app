@@ -2,8 +2,8 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import App from "./App";
 import './index.css'
-import AuthContext from "./Contexts/AuthContext";
-import WishlistProvider from "./Providers/WishlistProvider";
+import AuthContext from "./components/shared/Contexts/AuthContext";
+import WishlistProvider from "./components/shared/Providers/WishlistProvider";
 
 const currentUser = {
   email: 'yandex@ya.ru',

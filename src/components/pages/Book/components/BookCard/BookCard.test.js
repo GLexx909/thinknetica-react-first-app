@@ -6,8 +6,8 @@ import { MemoryRouter, Router } from "react-router-dom";
 import { act } from 'react-dom/test-utils';
 
 import BookCard from "./index";
-import App from '../../App'
-import WishlistProvider from "../../Providers/WishlistProvider";
+import App from '../../../../../App'
+import WishlistProvider from "../../../../shared/Providers/WishlistProvider";
 
 // test('renders book in a card', () => {
 //   const book = books[0]

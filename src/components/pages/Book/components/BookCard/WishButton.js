@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import classNames from "classnames/bind";
 import styles from "./BookCard.module.css";
-import WishlistContext from "../../Contexts/WishlistContext";
+import WishlistContext from "../../../../shared/Contexts/WishlistContext";
 
 const WishButton = ({book}) => {
   const { toggleWishes, isFavorite } = useContext(WishlistContext);

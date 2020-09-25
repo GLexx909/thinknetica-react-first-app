@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from "react-router-dom";
-import useBooks from "../../hooks/useBooks";
-import {bookPath} from "../../helpers/routes";
+import useBooks from "../../../shared/hooks/useBooks";
+import {bookPath} from "../../../../helpers/routes";
 
 const BookList = () => {
 

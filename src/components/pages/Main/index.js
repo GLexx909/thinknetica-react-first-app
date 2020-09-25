@@ -1,6 +1,6 @@
 import React from 'react'
-import BookList from '../components/BookList'
-import Layout from "../Layout";
+import BookList from './BookList'
+import Layout from "../../shared/Layout";
 import {Helmet} from "react-helmet";
 
 const Main = () => {

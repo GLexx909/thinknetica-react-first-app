@@ -1,8 +1,7 @@
 import React, { useContext } from 'react'
-import WishlistContext from "../../Contexts/WishlistContext";
-import BookList from "../BookList";
+import WishlistContext from "../../../shared/Contexts/WishlistContext";
 import {Link} from "react-router-dom";
-import {bookPath} from "../../helpers/routes";
+import {bookPath} from "../../../../helpers/routes";
 
 const WishList = () => {
   const { wishes } = useContext(WishlistContext);

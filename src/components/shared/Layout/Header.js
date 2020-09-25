@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
-import UserInfo from "../../UserInfo";
+import UserInfo from "./UserInfo/UserInfo";
 import styles from './Header.module.css'
-import ThemeContext from "../../Contexts/ThemeContext";
+import ThemeContext from "../Contexts/ThemeContext";
 import classNames from 'classnames/bind'
 import {Link} from "react-router-dom";
 

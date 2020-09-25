@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import styles from './Footer.module.css'
-import ThemeContext from "../../Contexts/ThemeContext";
+import ThemeContext from "../Contexts/ThemeContext";
 import classNames from 'classnames/bind'
 
 const Footer = () => {

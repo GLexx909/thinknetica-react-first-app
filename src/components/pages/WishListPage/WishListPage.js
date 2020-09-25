@@ -1,7 +1,7 @@
 import React from 'react'
-import Layout from "../Layout";
+import Layout from "../../shared/Layout";
 import {Helmet} from "react-helmet";
-import WishList from "../components/WishList";
+import WishList from "./WishList";
 
 
 const WishListPage = () => {

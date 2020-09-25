@@ -8,6 +8,8 @@ const WishlistProvider = ({children}) => {
   const [wishes, setWishes] = useState(localWishlistArray)
 
   const toggleWishes = book => {
+
+
     const updatedWishes = wishes.includes(book)
       ? wishes.filter(item => item !== book)
       : wishes.concat(book)

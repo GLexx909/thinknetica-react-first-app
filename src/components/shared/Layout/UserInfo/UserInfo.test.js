@@ -2,7 +2,7 @@ import React from 'react'
 import { render,fireEvent, waitFor, screen } from "@testing-library/react";
 import '@testing-library/jest-dom/extend-expect'
 import UserInfo from "./UserInfo";
-import AuthContext from "./Contexts/AuthContext";
+import AuthContext from "../../Contexts/AuthContext";
 
 test('renders email in a card', () => {
   const userAgent = {

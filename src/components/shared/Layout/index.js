@@ -1,7 +1,7 @@
 import React from 'react'
-import Header from "../shared/Layout/Header";
-import Footer from "../shared/Layout/Footer";
-import ButtonToTop from "../ButtonToTop";
+import Header from "./Header";
+import Footer from "./Footer";
+import ButtonToTop from "./ButtonToTop";
 import ThemeProvider from "../Providers/ThemeProvider";
 
 const Layout = ({children}) => {

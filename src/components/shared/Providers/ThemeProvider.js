@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import ThemeContext from "../Contexts/ThemeContext";
-import styles from '../App.module.css'
+import styles from '../../../App.module.css'
 
 const ThemeProvider = ({children}) => {
 
