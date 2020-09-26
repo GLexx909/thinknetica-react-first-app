@@ -8,10 +8,8 @@ const WishlistProvider = ({children}) => {
   const [wishes, setWishes] = useState(localWishlistArray)
 
   const toggleWishes = book => {
-
-
-    const updatedWishes = wishes.includes(book)
-      ? wishes.filter(item => item !== book)
+    const updatedWishes = isFavorite(book.id)
+      ? wishes.filter(item => item.id !== book.id)
       : wishes.concat(book)
 
     localStorage.setItem('wishlist', JSON.stringify(updatedWishes))
@@ -19,7 +17,7 @@ const WishlistProvider = ({children}) => {
   }
 
   const isFavorite = bookId => {
-    return _.find(wishes, { 'id': bookId })
+    return Boolean(_.find(wishes, { 'id': bookId }))
   }
 
   return (

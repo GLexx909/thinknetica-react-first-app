@@ -3,7 +3,6 @@ import Layout from "../../shared/Layout";
 import {Helmet} from "react-helmet";
 import WishList from "./WishList";
 
-
 const WishListPage = () => {
   return(
     <Layout>
