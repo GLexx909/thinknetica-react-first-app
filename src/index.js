@@ -2,7 +2,8 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import App from "./App";
 import './index.css'
-import AuthContext from "./Contexts/AuthContext";
+import AuthContext from "./components/shared/Contexts/AuthContext";
+import WishlistProvider from "./components/shared/Providers/WishlistProvider";
 
 const currentUser = {
   email: 'yandex@ya.ru',
@@ -12,8 +13,10 @@ const currentUser = {
 }
 
 ReactDOM.render(
-  < AuthContext.Provider value={currentUser}>
-    <App />
-  </AuthContext.Provider>,
+  <WishlistProvider>
+    < AuthContext.Provider value={currentUser}>
+      <App />
+    </AuthContext.Provider>
+  </WishlistProvider>,
   document.getElementById('root')
 )

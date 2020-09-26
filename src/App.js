@@ -1,21 +1,23 @@
 import React from 'react'
-import Header from "./shared/Layout/Header";
-import Footer from "./shared/Layout/Footer";
-import ButtonToTop from "./ButtonToTop";
-import BookCard from "./BookCard";
-import ThemeProvider from "./Providers/ThemeProvider";
+import {BrowserRouter, Route, Switch} from "react-router-dom";
+import Main from "./components/pages/Main";
+import NotFound from './components/pages/NotFound'
+import BookCard from "./components/pages/Book/components/BookCard";
+import WishListPage from "./components/pages/WishListPage";
+import {bookPath} from "./helpers/routes";
 
 class App extends React.Component {
 
   render() {
     return (
-      <ThemeProvider>
-        <Header />
-        <BookCard />
-        <div style={{height: '900px'}}>___</div>
-        <ButtonToTop />
-        <Footer />
-      </ThemeProvider>
+      <BrowserRouter>
+        <Switch>
+          <Route component={Main} path='/' exact />
+          <Route component={BookCard} path={bookPath()} strict exact />
+          <Route component={WishListPage} path='/wishlist' strict exact />
+          <Route render={NotFound} />
+        </Switch>
+      </BrowserRouter>
     )
   }
 }

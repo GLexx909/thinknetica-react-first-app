@@ -1,0 +1,13 @@
+.container {
+    display: flex;
+}
+
+.favoriteButton {
+    background-color: gold;
+}
+
+@media (max-width: 1000px) {
+    .container {
+        display: block;
+    }
+}
