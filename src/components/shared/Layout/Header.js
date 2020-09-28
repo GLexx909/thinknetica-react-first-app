@@ -4,6 +4,7 @@ import styles from './Header.module.css'
 import ThemeContext from "../Contexts/ThemeContext";
 import classNames from 'classnames/bind'
 import {Link} from "react-router-dom";
+import {newBookPath} from "../../../helpers/routes";
 
 const Header = () => {
   const { theme, changeTheme } = useContext(ThemeContext);
@@ -18,6 +19,9 @@ const Header = () => {
         </Link>
         <Link to={`/wishlist`}>
           <span className={styles.title}>Желаемое</span>
+        </Link>
+        <Link to={newBookPath()}>
+          <span className={styles.title}>Создать Новую книгу</span>
         </Link>
       </div>
       <UserInfo />

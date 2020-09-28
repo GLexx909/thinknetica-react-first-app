@@ -4,7 +4,8 @@ import Main from "./components/pages/Main";
 import NotFound from './components/pages/NotFound'
 import BookCard from "./components/pages/Book/components/BookCard";
 import WishListPage from "./components/pages/WishListPage";
-import {bookPath} from "./helpers/routes";
+import {bookPath, newBookPath} from "./helpers/routes";
+import NewBook from "./components/pages/NewBook";
 
 class App extends React.Component {
 
@@ -13,6 +14,7 @@ class App extends React.Component {
       <BrowserRouter>
         <Switch>
           <Route component={Main} path='/' exact />
+          <Route component={NewBook} path={newBookPath()} strict exact />
           <Route component={BookCard} path={bookPath()} strict exact />
           <Route component={WishListPage} path='/wishlist' strict exact />
           <Route render={NotFound} />

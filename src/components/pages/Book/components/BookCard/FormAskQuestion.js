@@ -1,8 +1,8 @@
 import React from 'react'
-import Field from "./Field";
-import styles from '../../pages/Book/components/BookCard/Subscribe/Form.module.css'
+import Field from "../../../../shared/elements/Field";
+import styles from './Subscribe/Form.module.css'
 
-class Form extends React.Component {
+class FormAskQuestion extends React.Component {
   constructor() {
     super();
 
@@ -43,4 +43,4 @@ class Form extends React.Component {
   }
 }
 
-export default Form
+export default FormAskQuestion
