@@ -11,6 +11,13 @@ import * as yup from 'yup'
 import { uploadFile } from "../../../helpers/filestack";
 import Spinner from '../../shared/elements/Spinner'
 
+const supportedFormats = [
+  "image/jpg",
+  "image/jpeg",
+  "image/gif",
+  "image/png"
+]
+
 const schema = yup.object().shape({
   id: yup.number().required(),
   title: yup.string().required(),
@@ -21,6 +28,21 @@ const schema = yup.object().shape({
   current_sum: yup.number().min(0).required(),
   expected_sum: yup.number().min(0).required(),
   authors: yup.array().required(),
+  cover: yup.mixed()
+    .test(
+      "required",
+      "A File is required",
+      value => value && value.length > 0
+    ).test(
+      "fileFormat",
+      "Unsupported format",
+      value => value && value[0] && supportedFormats.includes(value[0].type)
+    )
+    .test(
+      "fileSize",
+      "File to large",
+      value => value && value[0] && value[0].size <= 1000000
+    )
 })
 
 const NewBook = () => {
@@ -29,6 +51,7 @@ const NewBook = () => {
   const history = useHistory()
 
   const onSubmit = async ({cover, ...fields}) => {
+    console.log('====================')
     const formData = new FormData()
     formData.append('fileUpload', cover[0])
     const uploadResult = await uploadFile(formData)
