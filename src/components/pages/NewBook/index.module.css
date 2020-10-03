@@ -1,0 +1,51 @@
+.submitButton {
+    margin: 10px;
+
+    width: 100px;
+    height: 30px;
+    margin-top: 30px;
+
+    background-color: darkgreen;
+    color: white;
+
+    font-weight: bold;
+}
+
+.field {
+    margin: 10px;
+}
+
+.field label {
+    margin-right: 20px;
+    font-weight: bold;
+    display: block;
+}
+
+.field input {
+    padding: 5px;
+    border: 2px solid black;
+}
+
+.field textarea {
+    padding: 5px;
+    border: 2px solid black;
+}
+
+.field select {
+    padding: 5px;
+    border: 2px solid black;
+}
+
+.selectLabel {
+    margin-left: 10px;
+    margin-right: 20px;
+    font-weight: bold;
+    display: block;
+}
+
+.selectOptions {
+    margin-left: 10px;
+    margin-right: 20px;
+    font-weight: bold;
+    display: block;
+}

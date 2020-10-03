@@ -2,14 +2,13 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import {stringify} from "qs";
 import * as _ from "lodash";
-
-const API_TOKEN = ''
+import { AIRTABLE_API_TOKEN } from '../../../helpers/constants'
 
 const httpClient = axios.create({
   baseURL: 'https://api.airtable.com/v0/appD4uP6UKoSlwyRl',
-  timeout: 1000,
+  timeout: 10000,
   headers: {
-    'Authorization': `Bearer ${API_TOKEN}`
+    'Authorization': `Bearer ${AIRTABLE_API_TOKEN}`
   }
 })
 
@@ -17,7 +16,7 @@ function _fetch_data() {
   return (
     httpClient.get('/Books', {
       params: {
-        maxRecords: 5,
+        maxRecords: 15,
         view: 'Grid view',
         sort: [{field: 'id', direction: 'asc'}]
       },

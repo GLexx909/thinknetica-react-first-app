@@ -1,7 +1,7 @@
 import React from 'react'
 import AuthorsList from "./AuthorList/AuthorsList";
 import DiscountModal from "./DiscountModal";
-import Form from "../../../../shared/elements/Form";
+import FormAskQuestion from "./FormAskQuestion";
 import Row from "../../../../shared/elements/Row";
 import Button from "./Subscribe/Button";
 import Cover from "./Cover";
@@ -47,7 +47,7 @@ const BookCard = ({ match: { params } }) => {
           <Row label='Список авторов:'><AuthorsList authors={authors}/></Row>
           <SubscribeForm min_price={min_price} desired_price={desired_price}/>
           <Button label="Подписаться на книгу"/>
-          <Form />
+          <FormAskQuestion />
         </div>
       </div>
       <List books={otherBooksList}/>
