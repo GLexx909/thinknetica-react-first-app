@@ -2,7 +2,7 @@ import React, { useCallback } from 'react';
 import {useDropzone} from 'react-dropzone';
 import styles from './index.module.css'
 
-function DropzoneField({ errors, setCoverFile }) {
+function DropzoneField({ errors, setCoverFile, register }) {
 
   const onDrop = useCallback(acceptedFiles => {
     if (acceptedFiles)
@@ -20,7 +20,7 @@ function DropzoneField({ errors, setCoverFile }) {
   return (
     <section className={styles.dropSection}>
       <div {...getRootProps()}>
-        <input {...getInputProps({multiple: false})} />
+        <input ref={register} {...getInputProps({multiple: false})} />
         <p>Drag 'n' drop some files here, or click to select files</p>
       </div>
       <aside>

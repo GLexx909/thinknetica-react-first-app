@@ -94,7 +94,7 @@ const NewBook = () => {
         <Field name='current_sum' errors={errors} label='current_sum' fieldType='number' className={styles.field} defaultValue={0} register={register}/>
         <Field name='expected_sum' errors={errors} label='expected_sum' fieldType='number' className={styles.field} defaultValue={0} register={register}/>
 
-        <DropzoneField errors={errors} setCoverFile={setCoverFile}/>
+        <DropzoneField errors={errors} setCoverFile={setCoverFile} register={register}/>
 
         <label htmlFor='authors' className={styles.selectLabel}>authors</label>
 

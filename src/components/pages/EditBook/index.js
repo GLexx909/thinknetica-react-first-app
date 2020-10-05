@@ -117,7 +117,8 @@ const EditBook = ({ match: { params } }) => {
 
         {errors && errors['authors'] && <span style={{color: 'red'}}>{errors['authors'].message}</span>}
 
-        <DropzoneField errors={errors} setCoverFile={setCoverFile}/>
+        <DropzoneField errors={errors} setCoverFile={setCoverFile} register={register({test: false})}/>
+        {errors && errors['cover'] && <span style={{color: 'red'}}>{errors['cover'].message}</span>}
 
         <br/>
 
