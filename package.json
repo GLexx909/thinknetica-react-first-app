@@ -41,6 +41,7 @@
     "qs": "^6.9.4",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-dropzone": "^11.2.0",
     "react-helmet": "^6.1.0",
     "react-hook-form": "^6.8.6",
     "react-router": "^5.2.0",

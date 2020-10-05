@@ -46,7 +46,7 @@ function _mapFromAirtable(data) {
 
   return data.records.map(
     record => ({
-      id: record.fields.id,
+      id: record.id,
       title: record.fields.title,
       description: record.fields.description,
       pages_count: record.fields.pages_count,
@@ -73,7 +73,7 @@ const useBooks = () => {
   }, [])
 
   const findBook = paramsId => {
-    return books.find(item => item.id === parseInt(paramsId))
+    return books.find(item => item.id === paramsId)
   }
 
   const otherBooks = paramsId => {
