@@ -46,7 +46,7 @@ function _mapFromAirtable(data) {
 
   return data.records.map(
     record => ({
-      id: record.fields.id,
+      id: record.id,
       title: record.fields.title,
       description: record.fields.description,
       pages_count: record.fields.pages_count,
@@ -63,17 +63,17 @@ function _mapFromAirtable(data) {
   )
 }
 
-const useBooks = () => {
+const useBooks = (deletedBookId) => {
   const [books, setBooks] = useState(null)
 
   useEffect(() => {
     _fetch_data().then(books => {
       setBooks(books)
     })
-  }, [])
+  }, [deletedBookId])
 
   const findBook = paramsId => {
-    return books.find(item => item.id === parseInt(paramsId))
+    return books.find(item => item.id === paramsId)
   }
 
   const otherBooks = paramsId => {
