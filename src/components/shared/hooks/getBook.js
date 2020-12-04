@@ -54,6 +54,7 @@ function _mapFromAirtable(data) {
       current_sum: data.fields.current_sum,
       expected_sum: data.fields.expected_sum,
       subscribers_count: data.fields.subscribers_count,
+      authorIds: data.fields.authors,
       authors: _mapAuthors(data.fields)
     })
 }

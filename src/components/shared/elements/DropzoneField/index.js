@@ -27,6 +27,9 @@ function DropzoneField({ errors, setCoverFile, register }) {
         <h4>Files</h4>
         <ul>{files}</ul>
       </aside>
+
+      {errors && errors['cover'] && <span style={{color: 'red'}}>{errors['cover'].message}</span>}
+
     </section>
   );
 }

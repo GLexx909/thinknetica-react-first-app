@@ -86,7 +86,7 @@ const NewBook = () => {
       New Book
 
       <form onSubmit={handleSubmit(onSubmit)}>
-        <Field name='title' errors={errors} label='title' className={styles.field} register={register(register)}/>
+        <Field name='title' errors={errors} label='title' className={styles.field} register={register}/>
         <Field name='description' errors={errors} label='description' componentType='textarea' className={styles.field} register={register}/>
         <Field name='pages_count' errors={errors} label='pages_count' fieldType='number' className={styles.field} defaultValue={0} register={register}/>
         <Field name='min_price' errors={errors} label='min_price' fieldType='number' className={styles.field} defaultValue={200} register={register}/>

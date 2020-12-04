@@ -6,7 +6,7 @@ import deleteBook from '../../../shared/hooks/deleteBook'
 
 const BookList = () => {
   const [deletedBookId, setDeletedBookId] = useState( false )
-  const { books } = useBooks()
+  const { books } = useBooks(deletedBookId)
 
   const onDeleteBook = async (bookId) => {
     const res = await deleteBook(bookId)

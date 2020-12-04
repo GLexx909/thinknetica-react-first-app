@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Layout from "../../shared/Layout";
 import Field from "../../shared/elements/Field";
 import styles from './index.module.css'
@@ -30,35 +30,35 @@ const schema = yup.object().shape({
   current_sum: yup.number().min(0).required(),
   expected_sum: yup.number().min(0).required(),
   authors: yup.array().required(),
-  cover: yup.mixed()
-    .test(
-      "required",
-      "A File is required",
-      value => value && value.length > 0
-    ).test(
-      "fileFormat",
-      "Unsupported format",
-      value => value && value[0] && supportedFormats.includes(value[0].type)
-    )
-    .test(
-      "fileSize",
-      "File to large",
-      value => value && value[0] && value[0].size <= 1000000
-    )
+  // cover: yup.lazy((cover) => cover.default(undefined))
+
 })
 
+// let renderable = yup.lazy((value) => {
+//   switch (typeof value) {
+//     case 'number':
+//       return number();
+//   }
+// });
+
 const EditBook = ({ match: { params } }) => {
-  const { errors, register, handleSubmit, control, formState: { isSubmitting } } = useForm({ resolver: yupResolver(schema) })
+  const { setValue, errors, register, handleSubmit, control, formState: { isSubmitting } } = useForm({ resolver: yupResolver(schema) })
   const [coverFile, setCoverFile] = useState(null);
 
   const { fields, append, remove } = useFieldArray({
     control,
-    name: 'book'
+    name: 'authors'
   })
 
   const history = useHistory()
   const book = getBook(params.id)
   const authors = useAuthors()
+
+
+  useEffect(() => {
+    if (book)
+      setValue('authors', book.authorIds.map(authorId => ({ id: authorId })))
+  }, [book])
 
   if (!book || !authors)
     return <div>Waiting...</div>
@@ -105,7 +105,8 @@ const EditBook = ({ match: { params } }) => {
             key={index}
             ref={register}
             className={styles.selectOptions}
-            name='authors'
+            name={`authors[${index}]`}
+            defaultValue={field.id}
           >
             {authors.map((author) => (
               <option key={author.id} value={author.id}>{author.name}</option>
@@ -117,7 +118,7 @@ const EditBook = ({ match: { params } }) => {
 
         {errors && errors['authors'] && <span style={{color: 'red'}}>{errors['authors'].message}</span>}
 
-        <DropzoneField errors={errors} setCoverFile={setCoverFile} register={register({test: false})}/>
+        <DropzoneField errors={errors} setCoverFile={setCoverFile} />
         {errors && errors['cover'] && <span style={{color: 'red'}}>{errors['cover'].message}</span>}
 
         <br/>

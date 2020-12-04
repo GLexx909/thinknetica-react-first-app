@@ -63,14 +63,14 @@ function _mapFromAirtable(data) {
   )
 }
 
-const useBooks = () => {
+const useBooks = (deletedBookId) => {
   const [books, setBooks] = useState(null)
 
   useEffect(() => {
     _fetch_data().then(books => {
       setBooks(books)
     })
-  }, [])
+  }, [deletedBookId])
 
   const findBook = paramsId => {
     return books.find(item => item.id === paramsId)
