@@ -15,7 +15,7 @@ class App extends React.Component {
 
   render() {
     const history = this.props.history || browserHistory;
-    console.log('---', process.env)
+
     return (
       <Router history={history}>
         <Switch>

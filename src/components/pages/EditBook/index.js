@@ -53,7 +53,7 @@ const EditBook = ({ match: { params } }) => {
   const history = useHistory()
   const book = getBook(params.id)
   const authors = useAuthors()
-
+  console.log('-----', book)
 
   useEffect(() => {
     if (book)
