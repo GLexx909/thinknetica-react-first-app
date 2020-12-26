@@ -29,7 +29,7 @@ const schema = yup.object().shape({
   desired_price: yup.number().max(100000).required(),
   current_sum: yup.number().min(0).required(),
   expected_sum: yup.number().min(0).required(),
-  authors: yup.array().required(),
+  // authors: yup.array().required(),
   // cover: yup.lazy((cover) => cover.default(undefined))
 
 })
@@ -53,7 +53,6 @@ const EditBook = ({ match: { params } }) => {
   const history = useHistory()
   const book = getBook(params.id)
   const authors = useAuthors()
-  console.log('-----', book)
 
   useEffect(() => {
     if (book)
@@ -103,7 +102,7 @@ const EditBook = ({ match: { params } }) => {
         { fields.map((field, index) => (
           <select
             key={index}
-            ref={register}
+            // ref={register}
             className={styles.selectOptions}
             name={`authors[${index}]`}
             defaultValue={field.id}

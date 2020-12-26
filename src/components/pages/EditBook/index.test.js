@@ -2,35 +2,49 @@ import React from 'react'
 import { render, waitFor, screen } from "@testing-library/react";
 import '@testing-library/jest-dom/extend-expect'
 import '@babel/plugin-transform-async-to-generator'
-import { act } from 'react-dom/test-utils';
 
 import EditBook from "./index";
 import App from '../../../App'
 
 import { createMemoryHistory } from 'history'
 import getBook from '../../shared/hooks/getBook'
-jest.mock('../../shared/hooks/getBook')
+import useAuthors from '../../shared/hooks/useAuthors'
+import mockGetBook from '../../../mocks/getBook'
+import mockAuthors from '../../../mocks/authors'
 
-test('renders book', async () => {
+// Приложением ошибся. Не нужно было этот тест писать.
+
+jest.mock('../../shared/hooks/getBook', () => {
+  return jest.fn(() => mockGetBook);
+})
+
+jest.mock('../../shared/hooks/useAuthors', () => {
+  return jest.fn(() => mockAuthors);
+})
+
+beforeEach(() => {
   const history = createMemoryHistory()
   history.push("/books/recycbYjh3TkgZMPM/edit")
 
-  const promise = Promise.resolve([])
-  getBook.mockImplementationOnce(() => promise)
+  getBook.mockImplementationOnce(() => mockGetBook)
+  useAuthors.mockImplementationOnce(() => mockAuthors)
 
   render(
     <App history={history}>
       <EditBook />
     </App>
   )
+})
 
-  await act(() => promise)
+test('render book values in fields', async () => {
+  const titleInput = screen.getByLabelText(/title/i)
+  expect(titleInput).toHaveValue('Книга Хамурапи')
 
-  expect(getBook).toHaveBeenCalledTimes(1)
+  const descriptionInput = screen.getByLabelText(/description/i)
+  expect(descriptionInput).toHaveValue('Хамурапи Хамурапи Хамурапи')
 
-  // const labelName = screen.getByText('Книга Хамурапи')
-  // expect(labelName).toBeTruthy
+  expect(screen.getByRole(/option/i, { name: 'Валентин Катасонов' })).toBeInTheDocument()
 
-  await waitFor(() => screen.getByText(/Книга Хамурапи/i));
-
+  const submitButton = screen.getByRole(/button/i, { name: 'Update book' })
+  expect(submitButton).toBeInTheDocument()
 })
